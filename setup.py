@@ -34,7 +34,7 @@ setup(
     long_description=long_description,
 
     # The project URL.
-    url='https://github.com/pypa/sampleproject',
+    url='https://github.com/estatic/PyPusher',
 
     # Author details
     author='Ivan Grunev',
@@ -69,7 +69,7 @@ setup(
     ],
 
     # What does your project relate to?
-    keywords='pusher',
+    keywords='pusherapp',
 
     # You can just specify the packages manually here if your project is
     # simple. Or you can use find_packages.

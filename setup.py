@@ -28,7 +28,7 @@ with codecs.open('DESCRIPTION.rst', encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name="pypusher",
+    name="pypusherapp",
     version=find_version('pypusher', '__init__.py'),
     description="Pusher python wrapper",
     long_description=long_description,

@@ -11,8 +11,8 @@ class Channels(object):
     def channels(self):
         return self.__channels
 
-    def __init__(self, logger=logging.getLogger(__name__)):
-        self.logger = logger
+    def __init__(self, logger=None):
+        self.logger = logger or logging.getLogger(__name__)
         self.__channels = {}
 
     def add(self, channel_name, user_data):

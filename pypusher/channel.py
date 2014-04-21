@@ -2,18 +2,18 @@ import logging
 
 class Channel(object):
 
-    def __init__(self, channel_name, user_data=None, logger=logging.getLogger(__name__)):
+    def __init__(self, channel_name, user_data=None, logger=None):
         self.name = channel_name
         self.user_data = user_data
-        self.logger = logger
+        self.logger = logger or logging.getLogger(__name__)
         self.is_global = False
         self.callbacks = {}
         self.subscribed = False
 
     def bind(self, event_name, callback):
-      self.logger.debug("Binding {0} to {1}".format(event_name, self.name))
-      self.callbacks[event_name] = self.callbacks.get(event_name) or []
-      self.callbacks[event_name].append((callback))
+        self.logger.debug("Binding {0} to {1}".format(event_name, self.name))
+        self.callbacks[event_name] = self.callbacks.get(event_name) or []
+        self.callbacks[event_name].append((callback))
 
     def dispatch_with_all(self, event_name, data):
       self.dispatch(event_name, data)
@@ -24,9 +24,11 @@ class Channel(object):
             is_global = ''
         self.logger.debug("Dispatching {0}callbacks for {1}".format(is_global,event_name))
 
-        if self.callbacks[event_name]:
+        self.logger.debug("CHANNELS LIST: [{0}]".format(', '.join(self.callbacks.keys())))
+
+        if self.callbacks.get(event_name):
             for callback in self.callbacks[event_name]:
-                callback.call(data)
+                callback(data)
         else:
             self.logger.debug("No {0}callbacks to dispatch for {1}".format(is_global, event_name))
 

@@ -41,7 +41,7 @@ setup(
     author_email='ivan.grunev@gmail.com',
 
     # Choose your license
-    license='MIT',
+    license='MIT GPL',
 
     classifiers=[
         # How mature is this project? Common values are
